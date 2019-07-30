@@ -42,7 +42,7 @@ public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends Re
     }
 
 
-    abstract int layoutId();
+    public abstract int layoutId();
 
-    abstract void onBindHolder(B binding, int position);
+    public abstract void onBindHolder(B binding, int position);
 }
