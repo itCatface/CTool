@@ -28,15 +28,15 @@ public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends Re
     public static class Holder<B> extends RecyclerView.ViewHolder {
         private B binding;
 
-        Holder(@NonNull View itemView) {
+        public Holder(@NonNull View itemView) {
             super(itemView);
         }
 
-        B getBinding() {
+        public B getBinding() {
             return binding;
         }
 
-        void setBinding(B binding) {
+        public void setBinding(B binding) {
             this.binding = binding;
         }
     }
