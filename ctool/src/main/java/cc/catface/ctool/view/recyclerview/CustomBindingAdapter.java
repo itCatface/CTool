@@ -25,7 +25,7 @@ public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends Re
     }
 
 
-    static class Holder<B> extends RecyclerView.ViewHolder {
+    public static class Holder<B> extends RecyclerView.ViewHolder {
         private B binding;
 
         Holder(@NonNull View itemView) {
