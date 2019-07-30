@@ -12,31 +12,31 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Created by catfaceWYH --> tel|wechat|qq 130 128 92925
  */
-public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends RecyclerView.Adapter<CustomBindingAdapter.Holder<B>> {
-    @NonNull @Override public Holder<B> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends RecyclerView.Adapter<CustomBindingAdapter.ViewHolder<B>> {
+    @NonNull @Override public ViewHolder<B> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         B binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId(), parent, false);
-        Holder<B> holder = new Holder<>(binding.getRoot());
+        ViewHolder<B> holder = new ViewHolder<>(binding.getRoot());
         holder.setBinding(binding);
         return holder;
     }
 
-    @Override public void onBindViewHolder(@NonNull Holder<B> holder, int position) {
+    @Override public void onBindViewHolder(@NonNull ViewHolder<B> holder, int position) {
         onBindHolder(holder.getBinding(), position);
     }
 
 
-    public static class Holder<B> extends RecyclerView.ViewHolder {
+    static class ViewHolder<B> extends RecyclerView.ViewHolder {
         private B binding;
 
-        public Holder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
-        public B getBinding() {
+        B getBinding() {
             return binding;
         }
 
-        public void setBinding(B binding) {
+        void setBinding(B binding) {
             this.binding = binding;
         }
     }
