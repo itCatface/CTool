@@ -25,6 +25,10 @@ public abstract class ListBindingAdapter<M, B extends ViewDataBinding> extends R
         }
     }
 
+    public List<M> getDatas() {
+        return this.mDatas;
+    }
+
 
     @NonNull @Override public ViewHolder<B> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         B binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId(), parent, false);
