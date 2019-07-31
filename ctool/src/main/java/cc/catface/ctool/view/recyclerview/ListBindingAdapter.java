@@ -9,10 +9,22 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by catfaceWYH --> tel|wechat|qq 130 128 92925
  */
-public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends RecyclerView.Adapter<CustomBindingAdapter.ViewHolder<B>> {
+public abstract class ListBindingAdapter<M, B extends ViewDataBinding> extends RecyclerView.Adapter<ListBindingAdapter.ViewHolder<B>> {
+
+    private List<M> mDatas = new ArrayList<>();
+
+    public ListBindingAdapter(List<M> datas) {
+        if (null != datas) {
+            this.mDatas = datas;
+        }
+    }
+
 
     @NonNull @Override public ViewHolder<B> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         B binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId(), parent, false);
@@ -23,6 +35,10 @@ public abstract class CustomBindingAdapter<B extends ViewDataBinding> extends Re
 
     @Override public void onBindViewHolder(@NonNull ViewHolder<B> holder, int position) {
         onBindHolder(holder.getBinding(), position);
+    }
+
+    @Override public int getItemCount() {
+        return mDatas.size();
     }
 
 
