@@ -1,1 +1,1 @@
-include ':app', ':ctool'
+include ':ctool', ':app'
